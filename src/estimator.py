@@ -1,4 +1,3 @@
-# convert period type
 def nomilise(timeToElapse, periodType):
     period = 1
     if periodType == "days":
