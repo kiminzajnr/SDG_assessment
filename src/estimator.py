@@ -1,4 +1,5 @@
-def nomalise(timeToElapse, periodType):
+# convert period type
+def nomilise(timeToElapse, periodType):
     period = 1
     if periodType == "days":
         period = timeToElapse
@@ -8,13 +9,12 @@ def nomalise(timeToElapse, periodType):
         period = int(timeToElapse * 30)
     return int(period)
 
-
 def estimator(data):
+
     impact = solve(data, 10)
     severeImpact = solve(data, 50)
 
     return {"data": data, "impact": impact, "severeImpact": severeImpact}
-
 
 def solve(data, multiplier):
     days = nomilise(data['timeToElapse'], data['periodType'])
@@ -33,9 +33,11 @@ def solve(data, multiplier):
     casesForVentilatorsByRequestedTime = int(infectionsByRequestedTime * 0.02)
     dollarsInFlight = int((infectionsByRequestedTime * avgDailyIncomePopulation * avgDailyIncomeInUSD) / days)
 
-    return {"currentlyInfected": currentlyInfected, "infectionsByRequestedTime": infectionsByRequestedTime,
-            "severeCasesByRequestedTime": severeCasesByRequestedTime, "hospitalBedsByRequestedTime": hospitalBedsByRequestedTime,
-            "casesForICUByRequestedTime": casesForICUByRequestedTime, "casesForVentilatorsByRequestedTime": casesForVentilatorsByRequestedTime,
+    return {"currentlyInfected": currentlyInfected, \
+            "infectionsByRequestedTime": infectionsByRequestedTime, \
+            "severeCasesByRequestedTime": severeCasesByRequestedTime, \
+            "hospitalBedsByRequestedTime": hospitalBedsByRequestedTime, \
+            "casesForICUByRequestedTime": casesForICUByRequestedTime, \
+            "casesForVentilatorsByRequestedTime": casesForVentilatorsByRequestedTime, \
             "dollarsInFlight": dollarsInFlight
-            }
-
+    }
